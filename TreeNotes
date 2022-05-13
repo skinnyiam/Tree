@@ -24,3 +24,30 @@ Code:
 Crux:
 we iterate through every node level wise and maintain an counter which will increase after every push of the nodes in left and right and if we get node->left null 
 node->right null we stop and return to function.
+
+===>>Binary Tree Right Side View
+
+Code :
+      vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        if(root==NULL) return ans;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()){
+            int size=q.size();
+            for(int i=0;i<size;i++){
+                TreeNode* curr= q.front();
+                q.pop();
+                if(i==size-1)
+                {
+                    ans.push_back(curr->val);
+                }
+                if(curr->left!=NULL) q.push(curr->left);
+                if(curr->right!=NULL) q.push(curr->right);
+            }
+        }
+        return ans;
+    }
+    
+  Crux : 
+  we iterate through every node level wise and take the size of queue and push only last element of queue this way will get the right view of the tree.
