@@ -1,0 +1,26 @@
+==>> Minimum Depth of Binary Tree :
+
+Code:
+    int minDepth(TreeNode* root) {
+
+        queue<pair<TreeNode*,int>> q;
+        q.push({root,1});
+        while(!q.empty()){
+            auto item=q.front();
+            TreeNode* node = item.first;
+            int depth=item.second;
+            q.pop();
+            if(node==NULL) continue;
+            if(node->left==NULL && node->right==NULL){
+                return depth;
+            }
+            q.push({node->left,depth+1});
+                        q.push({node->right,depth+1});
+
+        }
+        return 0;
+}
+
+Crux:
+we iterate through every node level wise and maintain an counter which will increase after every push of the nodes in left and right and if we get node->left null 
+node->right null we stop and return to function.
