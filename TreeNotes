@@ -66,3 +66,26 @@ Code :
        Crux : at every node go to left as possible and go to right and give their left height and right height and add 1 because node should also add
        and hence this way recursively you get the answer .
        TC O(n) ;
+       
+   ===>> Balanced binary tree
+   
+   code :
+    int height(TreeNode* root){
+        if(root==NULL) return 0;
+        int lh=height(root->left);
+            if(lh==-1) return -1;
+        int rh=height(root->right);
+            if(rh==-1) return -1;
+        
+        if(abs(lh-rh)>1) return -1;
+        return max(rh,lh)+1;
+        
+    }
+    
+    bool isBalanced(TreeNode* root) {
+        return height(root)!=-1;
+    }
+    
+    first we compute height of evry node and we know that for balanced tree every node should have their difference between lh and rh should not have more than 1 
+    so at every time if the node value is gretaer than 1 we return -1 or if the height of lh or rh is -1 we return -1 in this way we check for balanced binary
+    tree.
