@@ -51,3 +51,18 @@ Code :
     
   Crux : 
   we iterate through every node level wise and take the size of queue and push only last element of queue this way will get the right view of the tree.
+  
+  
+  ===>> Maximum depth / height of the tree
+  
+  Code :
+            int maxdepth(root){
+            if(root==NULL) return 0;
+            int lh = maxdepth(root->left);
+            int rh= maxdepth(root->right);
+            
+            return 1+max(lh+rh);
+            }
+       Crux : at every node go to left as possible and go to right and give their left height and right height and add 1 because node should also add
+       and hence this way recursively you get the answer .
+       TC O(n) ;
